@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import MapView, {Marker} from "react-native-maps";
+import MapView, {PROVIDER_GOOGLE, Marker} from "react-native-maps";
 import { StyleSheet, View, ScrollView } from "react-native";
 import * as Location from 'expo-location';
 
@@ -35,6 +35,7 @@ const Locations =() => {
     return(
         <View style={styles.container}>
             <MapView
+                provider={PROVIDER_GOOGLE}
                 onRegionChange={region => {
                     setLocatin({latitude: region.latitude, longitude : region.longitude})
                 }}
@@ -42,7 +43,12 @@ const Locations =() => {
                     setLocatin({latitude:region.latitude,longitude:region.longitude})
                 }}
                 style={styles.map}
-                zoo
+                initialRegion={{
+                    latitude: 35.24971,
+                    longitude: 128.90266,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
             >
             <Marker coordinate={{latitude: 35.24971, longitude:128.90266}}></Marker>
             </MapView>
