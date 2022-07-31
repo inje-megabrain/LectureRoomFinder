@@ -49,6 +49,9 @@ const Locations =() => {
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                   }}
+                showsUserLocation={true}
+                showsMyLocationButton={true}
+                
             >
             <Marker coordinate={{latitude: 35.24971, longitude:128.90266}}></Marker>
             </MapView>
