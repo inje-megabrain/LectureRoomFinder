@@ -9,7 +9,7 @@ const Locations =() => {
     const [initialRegion, setInitialRegion] = useState({
         latitude: 35.91395373474155,
         longitude: 127.73829440215488,
-        latitudeDelta: 5,
+        latitudeDelta: 50,
         longitudeDelta: 5,
     })
 
