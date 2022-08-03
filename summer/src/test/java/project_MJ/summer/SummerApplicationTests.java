@@ -11,5 +11,4 @@ class SummerApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
