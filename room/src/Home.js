@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +11,24 @@ import TextField from '@mui/material/TextField';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 
-function Home() {
+const Home=()=> {
+    const navigate = useNavigate();
+
+    const MAPClick = ()=> {
+        navigate("/MAP");
+    }
+    const campusClick=()=> {
+        navigate("/Campus");
+    }
+    const signupClick=()=> {
+        navigate("/Signup");
+    }
+    const joinClick=()=> {
+        navigate("/Join");
+    }
+    const searchClick=()=> {
+        navigate("/Search");
+    }
     return (
         <div className='home'>
             <Box sx={{ flexGrow: 1 }}>
@@ -20,10 +38,14 @@ function Home() {
                     MegaBrain
                 </Typography>
                 <Stack direction="row" spacing={2}>
-                    <Button variant="text" color="inherit" size='large'>Map</Button>
-                    <Button variant="text" color="inherit" size='large'>Campus</Button>
-                    <Button variant="text" color="inherit" size='large'>Sign Up</Button>
-                    <Button variant="outlined" color="inherit" size='large'>Join</Button>
+                    <Button variant="text" color="inherit" size='large' 
+                        onClick={MAPClick}>Map</Button>
+                    <Button variant="text" color="inherit" size='large'
+                        onClick={campusClick}>Campus</Button>
+                    <Button variant="text" color="inherit" size='large'
+                        onClick={signupClick}>Sign Up</Button>
+                    <Button variant="outlined" color="inherit" size='large'
+                        onClick={joinClick}>Join</Button>
                 </Stack>
                 </Toolbar>
             </AppBar>
@@ -42,7 +64,7 @@ function Home() {
                             <TextField id="outlined-basic" label="Depart" variant="outlined" />
                             <FlightLandIcon sx={{fontSize:50}} />
                             <TextField id="outlined-basic" label="Arrive" variant="outlined" />
-                            <Button variant="contained">Search</Button>
+                            <Button variant="contained" onClick={searchClick}>Search</Button>
                         </Stack>
                     </div>
                 </div>
