@@ -63,6 +63,39 @@
   margin-left: auto;
   margin-right: auto;
 }
+.signupback {
+  position: fixed;
+  background-color: rgb(64, 135, 242);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
+.signupmainframe {
+  position: relative;
+  width: 800px;
+  height: 650px;
+  background-color: white;
+  border-radius: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 120px;
+}
+.signupmain {
+  text-align: center;
+  font-size: 50px;
+  padding-top: 5%;
+}
+.signupmainunder {
+  text-align: center;
+  padding-top: 2%;
+}
+.underframe {
+  padding-right: 20%;
+  padding-left: 20%;
+  padding-top: 5%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

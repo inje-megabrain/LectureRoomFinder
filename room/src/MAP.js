@@ -5,25 +5,25 @@ import './App.css';
 const MAP=()=> {
     const {naver} = window;
 
-    // const [myLocation, setMyLocation] = useState<{ latitude: Number, longitude: number}>("");
-
-    // useEffect(()=> {
-    //     if(navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-    //             setMyLocation({
-    //                 latitude: position.coords.latitude,
-    //                 longitude: position.coords.longitude,
-    //             });
-    //         });
-    //     } else {
-    //         window.alert("Current Location unknown");
-    //     }
-    // }, []);
+    const [myLocation, setMyLocation] = useState({ latitude: 35.250565, longitude: 128.902063});
 
     useEffect(() => {
+        const currentPosition = [myLocation.latitude, myLocation.longitude];
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setMyLocation({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                });
+            });
+        } else {
+            window.alert("Current Location unknown");
+        }
+
         let map = null
         let marker = null
-
+        let marker1 = null
+ 
         const initMap = () => {
             map = new naver.maps.Map('map', {
                 //지도 추가, 좌표를 기점으로 주변 지도가 추가된다.
@@ -34,20 +34,18 @@ const MAP=()=> {
             })
 
             marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(35.24999, 128.902416), //Marker 추가, 좌표에 마커가 찍힌다.
+                position: new naver.maps.LatLng(currentPosition[0], currentPosition[1]), //Marker 추가, 좌표에 마커가 찍힌다.
                 map: map,
-                // icon: {
-                //     content: `
-                //         <img alt="marker" src={RoomIcon} />
-                //             `
-                // }
+            })
+            marker1 = new naver.maps.Marker({ // test marker
+                position: new naver.maps.LatLng(35.250565, 128.902063), //Marker 추가, 좌표에 마커가 찍힌다.
+                map: map,
             })
         }
         initMap()
-    }, [])
+    }, [myLocation]);
+
     const mapstyle = {
-        // width: '80%',
-        // height: '500px'
         height: '100vh',
         width: '100vw'
     }
