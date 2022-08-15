@@ -35,15 +35,13 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public void addLectToUser(String username,String name) {
+    public void addLectToUser(String username,String place) {
         Users users = userRepo.findByName(username);
-        users.setLect(name);
+        users.setLect(place);
         LectureRoom lectureRoom = new LectureRoom();
-        lectureRoom.setSearch(name);
-        //List<Locations> locations =  locationRepo.findByLocationsList(name);
-       // for(int i=0;i<locations.size();i++){
-        //    log.info("{}",locations.get(i).toString());
-       // }
+        lectureRoom.setSearch(place);
+        String location = locationRepo.findByPlaceContaining(place).toString();
+        log.info("{}",location);
 
 
         //LectureRoom lectureRoom = lectureRoomRepo.findByLect(location);
@@ -55,7 +53,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public void setLectToLocation(String username, String locationname) {
+    public void setLectToLocation(String username, String place) {
       Users users = userRepo.findByName(username);
       LectureRoom lectureRoom = new LectureRoom();
 
@@ -70,7 +68,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Locations saveLocation(Locations locations) {
-        log.info("ID : {} Location : {} X : {} Y : {}",locations.getId(),locations.getList(),locations.getX(),locations.getY());
+        log.info("ID : {} Location : {} X : {} Y : {}",locations.getId(),locations.getPlace(),locations.getX(),locations.getY());
         return locationRepo.save(locations);
     }
     @Override

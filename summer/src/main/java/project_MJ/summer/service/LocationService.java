@@ -13,7 +13,7 @@ public interface LocationService {
     List<Users>getUsers();
 
     void addLectToUser (String username,String location);
-    void setLectToLocation(String username, String locationname);
+    void setLectToLocation(String username, String place);
 
     LectureRoom saveLectRoom (LectureRoom lectureRoom);
     Locations saveLocation(Locations locations);

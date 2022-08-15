@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface LocationRepo extends JpaRepository<Locations,Long> {
 
-   // List<Locations> findByLocationsList(@Param("list")String list);
+    List<Locations> findByPlaceContaining (String place);
 
 }

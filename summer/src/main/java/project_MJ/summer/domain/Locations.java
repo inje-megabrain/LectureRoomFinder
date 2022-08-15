@@ -21,15 +21,8 @@ public class Locations {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    @ElementCollection(targetClass=String.class)
-    private List<String> list = new ArrayList<>();
+    private String place;
 
     private String x;
     private String y;
-
-    public Locations(Long id, String x, String y) {
-        this.id = id;
-        this.x = x;
-        this.y = y;
-    }
 }

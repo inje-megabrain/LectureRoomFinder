@@ -24,23 +24,10 @@ public class SummerApplication {
 			locationServiceimpl.saveUser(new Users(null,"문상원","MOON","kuim75","1234",new ArrayList<>(),null));
 
 			locationServiceimpl.saveLectRoom(new LectureRoom(null,"13","15","A동",new ArrayList<>()));
-
-			List<String> place1 = new ArrayList<>();
-			place1.add("A동");
-			place1.add("하연관");
-
-			List<String> place2 = new ArrayList<>();
-			place2.add("B동");
-			place2.add("창조관");
-			List<String> place3 = new ArrayList<>();
-			place3.add("C동");
-			place3.add("신어관");
-
-			locationServiceimpl.saveLocation(new Locations(1L, place1,"35.247429","128.902785"));
-			locationServiceimpl.saveLocation(new Locations(2L, place2,"35.248505","128.903846"));
-			locationServiceimpl.saveLocation(new Locations(3L, place3,"35.249394","128.903272"));
-
-			//locationServiceimpl.addLectToUser("문상원","A동");
+			locationServiceimpl.saveLocation(new Locations(1L,"A동 하연관","35.247429","128.902785"));
+			locationServiceimpl.saveLocation(new Locations(2L,"B동 창조관","35.248505","128.903846"));
+			locationServiceimpl.saveLocation(new Locations(3L,"C동 신어관","35.249394","128.903272"));
+			locationServiceimpl.addLectToUser("문상원","B동");
 		};
 	}
 }
