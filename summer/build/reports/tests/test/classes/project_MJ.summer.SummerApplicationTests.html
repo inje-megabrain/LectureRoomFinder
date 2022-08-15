@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.061s</div>
+<div class="counter">0.073s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.061s</td>
+<td class="success">0.073s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,21 +87,21 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>14:38:19.065 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-14:38:19.072 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-14:38:19.090 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [project_MJ.summer.SummerApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-14:38:19.098 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [project_MJ.summer.SummerApplicationTests], using SpringBootContextLoader
-14:38:19.101 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [project_MJ.summer.SummerApplicationTests]: class path resource [project_MJ/summer/SummerApplicationTests-context.xml] does not exist
-14:38:19.101 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [project_MJ.summer.SummerApplicationTests]: class path resource [project_MJ/summer/SummerApplicationTestsContext.groovy] does not exist
-14:38:19.101 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [project_MJ.summer.SummerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-14:38:19.102 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [project_MJ.summer.SummerApplicationTests]: SummerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:38:19.125 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [project_MJ.summer.SummerApplicationTests]
-14:38:19.159 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/moon/Desktop/방학/LectureRoomFinder/summer/build/classes/java/main/project_MJ/summer/SummerApplication.class]
-14:38:19.160 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration project_MJ.summer.SummerApplication for test class project_MJ.summer.SummerApplicationTests
-14:38:19.213 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [project_MJ.summer.SummerApplicationTests]: using defaults.
-14:38:19.213 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-14:38:19.224 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5851bd4f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7cd1ac19, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2f40a43, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3caa4757, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@69c43e48, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1804f60d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3a80515c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@547e29a4, org.springframework.test.context.event.EventPublishingTestExecutionListener@1c807b1d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@238b521e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1b39fd82, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3e2fc448, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@21680803, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@588ab592, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@c8b96ec]
-14:38:19.226 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3228d990 testClass = SummerApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@54e7391d testClass = SummerApplicationTests, locations = '{}', classes = '{class project_MJ.summer.SummerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:/application.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@686449f9, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7756c3cd, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6cfcd46d, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@26425897, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@42e3ede4, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@264f218], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>18:54:57.115 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+18:54:57.121 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+18:54:57.148 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [project_MJ.summer.SummerApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+18:54:57.155 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [project_MJ.summer.SummerApplicationTests], using SpringBootContextLoader
+18:54:57.160 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [project_MJ.summer.SummerApplicationTests]: class path resource [project_MJ/summer/SummerApplicationTests-context.xml] does not exist
+18:54:57.161 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [project_MJ.summer.SummerApplicationTests]: class path resource [project_MJ/summer/SummerApplicationTestsContext.groovy] does not exist
+18:54:57.161 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [project_MJ.summer.SummerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+18:54:57.161 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [project_MJ.summer.SummerApplicationTests]: SummerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:54:57.212 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [project_MJ.summer.SummerApplicationTests]
+18:54:57.269 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/moon/Desktop/방학/LectureRoomFinder/summer/build/classes/java/main/project_MJ/summer/SummerApplication.class]
+18:54:57.270 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration project_MJ.summer.SummerApplication for test class project_MJ.summer.SummerApplicationTests
+18:54:57.337 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [project_MJ.summer.SummerApplicationTests]: using defaults.
+18:54:57.338 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+18:54:57.348 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@251f7d26, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@77b21474, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@52d10fb8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@41c07648, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1fe8d51b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@781e7326, org.springframework.test.context.transaction.TransactionalTestExecutionListener@22680f52, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@60d84f61, org.springframework.test.context.event.EventPublishingTestExecutionListener@39c11e6c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@324dcd31, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@503d56b5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@72bca894, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@433ffad1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1fc793c2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2575f671]
+18:54:57.350 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@21680803 testClass = SummerApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@588ab592 testClass = SummerApplicationTests, locations = '{}', classes = '{class project_MJ.summer.SummerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{classpath:/application.properties}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@5d2a4eed, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@62e6b5c8, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6aecbb8d, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@72758afa, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@73163d48, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@34129c78], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -111,63 +111,279 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.2)
 
-2022-08-03 14:38:19.637  INFO 68370 --- [    Test worker] p.summer.SummerApplicationTests          : Starting SummerApplicationTests using Java 11.0.9.1 on munsang-won-ui-MacBookAir.local with PID 68370 (started by moon in /Users/moon/Desktop/방학/LectureRoomFinder/summer)
-2022-08-03 14:38:19.638  INFO 68370 --- [    Test worker] p.summer.SummerApplicationTests          : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2022-08-03 14:38:20.050  INFO 68370 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-08-03 14:38:20.073  INFO 68370 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interfaces.
-2022-08-03 14:38:20.382  INFO 68370 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-08-03 14:38:20.419  INFO 68370 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
-2022-08-03 14:38:20.536  INFO 68370 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-08-03 14:38:20.594  INFO 68370 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-08-03 14:38:20.717  INFO 68370 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-08-03 14:38:20.745  INFO 68370 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-08-15 18:54:57.623  INFO 20381 --- [    Test worker] p.summer.SummerApplicationTests          : Starting SummerApplicationTests using Java 11.0.9.1 on munsang-won-ui-MacBookAir.local with PID 20381 (started by moon in /Users/moon/Desktop/방학/LectureRoomFinder/summer)
+2022-08-15 18:54:57.624  INFO 20381 --- [    Test worker] p.summer.SummerApplicationTests          : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-08-15 18:54:58.215  INFO 20381 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-08-15 18:54:58.253  INFO 20381 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 3 JPA repository interfaces.
+2022-08-15 18:54:58.579  INFO 20381 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-15 18:54:58.612  INFO 20381 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-08-15 18:54:58.721  INFO 20381 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-15 18:54:58.772  INFO 20381 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-15 18:54:58.895  INFO 20381 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-15 18:54:58.913  INFO 20381 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    create table lecture_room (
+       id bigint not null,
+        end_time varchar(255),
+        search varchar(255),
+        start_time varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table lecture_room_locations (
+       lecture_room_id bigint not null,
+        locations_id bigint not null
+    )
 Hibernate: 
     
     create table locations (
        id bigint not null,
-        name varchar(255),
         x varchar(255),
         y varchar(255),
         primary key (id)
     )
+Hibernate: 
+    
+    create table locations_name (
+       locations_id bigint not null,
+        name varchar(255)
+    )
+Hibernate: 
+    
+    create table users (
+       id bigint not null,
+        identity varchar(255),
+        lect varchar(255),
+        name varchar(255),
+        pw varchar(255),
+        username varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table users_lecture_rooms (
+       users_id bigint not null,
+        lecture_rooms_id bigint not null
+    )
+Hibernate: 
+    
+    alter table lecture_room_locations 
+       drop constraint if exists UK_bbt35sxp853k0jrn9tjac52tf
+Hibernate: 
+    
+    alter table lecture_room_locations 
+       add constraint UK_bbt35sxp853k0jrn9tjac52tf unique (locations_id)
+Hibernate: 
+    
+    alter table users_lecture_rooms 
+       drop constraint if exists UK_8hx7xs15ccaiwspaioya4gboo
+Hibernate: 
+    
+    alter table users_lecture_rooms 
+       add constraint UK_8hx7xs15ccaiwspaioya4gboo unique (lecture_rooms_id)
 Hibernate: create sequence hibernate_sequence start with 1 increment by 1
-2022-08-03 14:38:21.079  INFO 68370 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-08-03 14:38:21.083  INFO 68370 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-08-03 14:38:21.529  INFO 68370 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-08-03 14:38:21.814  INFO 68370 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-08-03 14:38:21.824  INFO 68370 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-08-03 14:38:21.835  INFO 68370 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-08-03 14:38:21.900  INFO 68370 --- [    Test worker] p.summer.SummerApplicationTests          : Started SummerApplicationTests in 2.646 seconds (JVM running for 3.286)
-2022-08-03 14:38:21.901  INFO 68370 --- [    Test worker] p.summer.service.LocationService         : A동 35.247429 128.902785
+Hibernate: 
+    
+    alter table lecture_room_locations 
+       add constraint FKmjbebcd3c4ghnrt94yfi16d3b 
+       foreign key (locations_id) 
+       references lecture_room
+Hibernate: 
+    
+    alter table lecture_room_locations 
+       add constraint FKr73b5ax10kdhoqplf74tbcwjt 
+       foreign key (lecture_room_id) 
+       references lecture_room
+Hibernate: 
+    
+    alter table locations_name 
+       add constraint FK6cnt6qjx2smqbyk4upv6v7uxr 
+       foreign key (locations_id) 
+       references locations
+Hibernate: 
+    
+    alter table users_lecture_rooms 
+       add constraint FKjvgo0my8yf209lov9vns9vck2 
+       foreign key (lecture_rooms_id) 
+       references lecture_room
+Hibernate: 
+    
+    alter table users_lecture_rooms 
+       add constraint FK76fpf3avv1ene235jgexykf0t 
+       foreign key (users_id) 
+       references users
+2022-08-15 18:54:59.307  INFO 20381 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-15 18:54:59.311  INFO 20381 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-15 18:54:59.878  INFO 20381 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-08-15 18:55:00.212  INFO 20381 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-08-15 18:55:00.225  INFO 20381 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-08-15 18:55:00.241  INFO 20381 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-08-15 18:55:00.323  INFO 20381 --- [    Test worker] p.summer.SummerApplicationTests          : Started SummerApplicationTests in 2.948 seconds (JVM running for 3.78)
+2022-08-15 18:55:00.331  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : 문상원 MOON kuim75 1234
+Hibernate: 
+    call next value for hibernate_sequence
+Hibernate: 
+    insert 
+    into
+        users
+        (identity, lect, name, pw, username, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    call next value for hibernate_sequence
+Hibernate: 
+    insert 
+    into
+        lecture_room
+        (end_time, search, start_time, id) 
+    values
+        (?, ?, ?, ?)
+2022-08-15 18:55:00.368  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : ID : 1 Location : [A동, 하연관] X : 35.247429 Y : 128.902785
+Hibernate: 
+    select
+        locations0_.id as id1_2_0_,
+        locations0_.x as x2_2_0_,
+        locations0_.y as y3_2_0_ 
+    from
+        locations locations0_ 
+    where
+        locations0_.id=?
 Hibernate: 
     call next value for hibernate_sequence
 Hibernate: 
     insert 
     into
         locations
-        (name, x, y, id) 
+        (x, y, id) 
     values
-        (?, ?, ?, ?)
-2022-08-03 14:38:21.931  INFO 68370 --- [    Test worker] p.summer.service.LocationService         : B동 35.248505 128.903846
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        locations_name
+        (locations_id, name) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        locations_name
+        (locations_id, name) 
+    values
+        (?, ?)
+2022-08-15 18:55:00.382  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : ID : 2 Location : [B동, 창조관] X : 35.248505 Y : 128.903846
+Hibernate: 
+    select
+        locations0_.id as id1_2_0_,
+        locations0_.x as x2_2_0_,
+        locations0_.y as y3_2_0_ 
+    from
+        locations locations0_ 
+    where
+        locations0_.id=?
 Hibernate: 
     call next value for hibernate_sequence
 Hibernate: 
     insert 
     into
         locations
-        (name, x, y, id) 
+        (x, y, id) 
     values
-        (?, ?, ?, ?)
-2022-08-03 14:38:21.932  INFO 68370 --- [    Test worker] p.summer.service.LocationService         : C동 35.249394 128.903272
-Hibernate: 
-    call next value for hibernate_sequence
+        (?, ?, ?)
 Hibernate: 
     insert 
     into
-        locations
-        (name, x, y, id) 
+        locations_name
+        (locations_id, name) 
     values
-        (?, ?, ?, ?)
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        locations_name
+        (locations_id, name) 
+    values
+        (?, ?)
+2022-08-15 18:55:00.384  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : ID : 3 Location : [B동, 신어관] X : 35.249394 Y : 128.903272
+Hibernate: 
+    select
+        locations0_.id as id1_2_0_,
+        locations0_.x as x2_2_0_,
+        locations0_.y as y3_2_0_ 
+    from
+        locations locations0_ 
+    where
+        locations0_.id=?
+Hibernate: 
+    select
+        name0_.locations_id as location1_3_0_,
+        name0_.name as name2_3_0_ 
+    from
+        locations_name name0_ 
+    where
+        name0_.locations_id=?
+Hibernate: 
+    update
+        locations 
+    set
+        x=?,
+        y=? 
+    where
+        id=?
+Hibernate: 
+    delete 
+    from
+        locations_name 
+    where
+        locations_id=?
+Hibernate: 
+    insert 
+    into
+        locations_name
+        (locations_id, name) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        locations_name
+        (locations_id, name) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        users0_.id as id1_4_,
+        users0_.identity as identity2_4_,
+        users0_.lect as lect3_4_,
+        users0_.name as name4_4_,
+        users0_.pw as pw5_4_,
+        users0_.username as username6_4_ 
+    from
+        users users0_ 
+    where
+        users0_.name=?
+Hibernate: 
+    select
+        locations0_.id as id1_2_,
+        locations0_.x as x2_2_,
+        locations0_.y as y3_2_ 
+    from
+        locations locations0_
+2022-08-15 18:55:00.414  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : project_MJ.summer.domain.Locations@676f70dc
+2022-08-15 18:55:00.414  INFO 20381 --- [    Test worker] p.summer.service.LocationServiceImpl     : project_MJ.summer.domain.Locations@2591477f
+Hibernate: 
+    update
+        users 
+    set
+        identity=?,
+        lect=?,
+        name=?,
+        pw=?,
+        username=? 
+    where
+        id=?
 </pre>
 </span>
 </div>
@@ -179,7 +395,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 8. 3. 오후 2:38:22</p>
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 8. 15. 오후 6:55:00</p>
 </div>
 </div>
 </body>

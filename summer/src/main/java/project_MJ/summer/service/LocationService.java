@@ -1,30 +1,22 @@
 package project_MJ.summer.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import project_MJ.summer.domain.LectureRoom;
 import project_MJ.summer.domain.Locations;
-import project_MJ.summer.repository.LocationRepo;
+import project_MJ.summer.domain.Users;
 
 import java.util.List;
 
-@Service @RequiredArgsConstructor @Slf4j
+public interface LocationService {
 
-public class LocationService implements LocationServiceImpl{
-    private final LocationRepo locationRepo;
-    @Override
-    public Locations saveLocation(Locations locations) {
-        log.info("{} {} {}",locations.getName(),locations.getX(),locations.getY());
-        return locationRepo.save(locations);
-    }
-    @Override
-    public Locations getLocation(String name) {
-        return locationRepo.findByName(name);
-    }
+    Users saveUser(Users users);
+    Users getUser(String name);
+    List<Users>getUsers();
 
-    @Override
-    public List<Locations> getLocations() {
-        return locationRepo.findAll();
-    }
+    void addLectToUser (String username,String location);
+    void setLectToLocation(String username, String locationname);
+
+    LectureRoom saveLectRoom (LectureRoom lectureRoom);
+    Locations saveLocation(Locations locations);
+    Locations getLocation(String name);
+    List<Locations>getLocations();
 }
