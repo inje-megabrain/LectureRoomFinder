@@ -5,32 +5,56 @@ import './App.css';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {registerUser} from "./actions/userAction";
 
-const Signup=()=> {
+const Signup=(props)=> {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const JoinClick=()=> {
         navigate("/Join");
     }
-    const [Password, setPassword] = useState("");
+
+    const [password, setPassword] = useState("");
+    const [nickname,setNickname] = useState("");
+    const [id, setId] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value)
     }
+    const onNickHandler = (e) => {
+        setNickname(e.currentTarget.value);
+      };
+    
+      const onIdHandler = (e) => {
+        setId(e.currentTarget.value);
+      };
     const onconfirmPasswordHandler = (event) => {
         setconfirmPassword(event.currentTarget.value)
     }
-    const hasNotSameError = passwordEntered =>
-        Password != confirmPassword ? true : false;    
-
+    const hasNotSameError = passwordEntered => 
+        password !== confirmPassword ? true : false;    
+    
     const onSubmitHandler = (event) => {
-        event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
-
-        if(Password !== confirmPassword){
-            return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
-        }
-    }
+        event.preventDefault();
+        let body = {
+            nickname : nickname,
+            id : id,
+            password : password,
+        };
+        if (password === confirmPassword) {
+            dispatch(registerUser(body)).then((res) => {
+              console.log(res);
+              console.log('good');
+              alert("가입이 정상적으로 완료되었습니다");
+              props.history.push("/Join");
+            });
+          } else {
+            console.log('error');
+            alert("비밀번호가 일치하지 않습니다.");
+          }
+    };
 
     return (
         <div className='signupback'>
@@ -46,20 +70,23 @@ const Signup=()=> {
                     <Stack spacing={4}>
                         <TextField
                             required
-                            id="outlined-required"
+                            id="nickname"
                             label="NickName"
-                            defaultValue="개장수"
+                            value={nickname}
+                            onChange={onNickHandler}
                             />
                         <TextField
                         required
-                        id="outlined-required"
+                        id="userid"
+                        value={id}
                         label="ID"
+                        onChange={onIdHandler}
                         />
                         <TextField
-                        id="outlined-password-input"
+                        id="password"
                         label="Password"
                         type="password"
-                        value={Password}
+                        value={password}
                         onChange={onPasswordHandler}
                         autoComplete="current-password"
                         />
