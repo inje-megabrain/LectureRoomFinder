@@ -10,6 +10,8 @@ import Campus from './Campus';
 import Join from './Join';
 import Signup from './Signup';
 import Search from './Search';
+import LoginHome from './LoginHome';
+import Building from './Building';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/campus" element={<Campus/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/join" element={<Join/>} />
+        <Route path="/LoginHome" element={<LoginHome/>}/>
+        <Route path="/Building" element={<Building/>}/>
       </Routes>
     </BrowserRouter>
   );

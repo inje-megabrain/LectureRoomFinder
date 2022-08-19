@@ -17,6 +17,12 @@ const Join=(props)=> {
     const SignupClick=()=> {
         navigate("/Signup");
     }
+    const LoginClick=()=> {
+        navigate("/LoginHome");
+    }
+    const homeClick=()=> {
+        navigate("/");
+    }
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value)
@@ -43,6 +49,7 @@ const Join=(props)=> {
 
     return (
         <div className='loginback'>
+            <div className='megalogo' onClick={homeClick}>MegaBrain</div>
             <div className='signupmainframe'>
                 <div className='signupmain'>
                     Login
@@ -72,6 +79,7 @@ const Join=(props)=> {
                             variant="contained"
                             onSubmit={onSubmitHandler}
                             color="primary"
+                            onClick={LoginClick}
                         >로그인</Button>
                     </Stack>
                 </div>

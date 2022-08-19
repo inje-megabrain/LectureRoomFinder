@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { useState ,useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import './App.css';
 
 const MAP=()=> {
     const {naver} = window;
+    const navigate = useNavigate();
 
+    const homeClick=()=> {
+        navigate("/");
+    }
     const [myLocation, setMyLocation] = useState({ latitude: 35.250565, longitude: 128.902063});
 
     useEffect(() => {
@@ -51,6 +56,7 @@ const MAP=()=> {
     }
     return (
         <div>
+            <div className='megalogo2' onClick={homeClick}>MegaBrain</div>
             <div id='map' style={mapstyle}></div>
         </div>
     );

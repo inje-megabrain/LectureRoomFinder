@@ -14,6 +14,9 @@ const Signup=(props)=> {
     const JoinClick=()=> {
         navigate("/Join");
     }
+    const homeClick=()=> {
+        navigate("/");
+    }
 
     const [password, setPassword] = useState("");
     const [nickname,setNickname] = useState("");
@@ -58,6 +61,7 @@ const Signup=(props)=> {
 
     return (
         <div className='signupback'>
+            <div className='megalogo' onClick={homeClick}>MegaBrain</div>
             <div className='signupmainframe'>
                 <div className='signupmain'>
                     Create account

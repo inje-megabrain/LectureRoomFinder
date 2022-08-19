@@ -9,6 +9,20 @@
   margin-top: 80px;
   text-align: center;
 }
+.megalogo {
+  color: white;
+  font-size: 55px;
+  font-family: 500;
+  padding-left: 3%;
+  padding-top: 1%;
+}
+.megalogo2 {
+  font-size: 55px;
+  font-family: 500;
+  padding-left: 3%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
 .middle-big {
   font-size: 70px;
   font-family: 500;
@@ -43,8 +57,8 @@
 }
 .campusmainframe {
   position: relative;
-  width: 1200px;
-  height: 600px;
+  width: 80%; /*1200px*/
+  height: 60%; /*600px*/
   background-color: green;
   border-radius: 40px;
   margin-left: auto;
@@ -57,11 +71,15 @@
   border-radius: 40px;
   position: relative;
   background-image: url('/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/campus.jpg');
-  width: 1000px;
-  height: 500px;
+  width: 90%;/*1000px;*/
+  height: 90%;/*500px;*/
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
+}
+.campusbutton {
+  text-align: center;
+  margin-top: 3%;
 }
 .signupback {
   position: fixed;
@@ -77,7 +95,7 @@
   border-radius: 40px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 120px;
+  margin-top: 80px;
 }
 .signupmain {
   text-align: center;
