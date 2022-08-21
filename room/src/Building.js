@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useChain, useSpring, animated, useTransition, config } from 'react-spring';
 import './App.css';
+// import { useState, useRef } from 'react';
+// import data from './data';
 
-function Building() {
+const Building=()=> {
     const styles = useSpring({
         loop:true,
         to : [
@@ -11,10 +13,14 @@ function Building() {
         ],
         from: {opacity: 0, color:'yellow'}
     })
+    // useSpring example
+
     return (
-        <animated.div style={styles} className="middle-big">
-            Working!
-        </animated.div>
+        <div>
+            <animated.div style={styles} className="middle-big">
+                Working!
+            </animated.div>
+         </div>
     );
 }
 export default Building;

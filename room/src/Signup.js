@@ -49,12 +49,10 @@ const Signup=(props)=> {
         if (password === confirmPassword) {
             dispatch(registerUser(body)).then((res) => {
               console.log(res);
-              console.log('good');
               alert("가입이 정상적으로 완료되었습니다");
               props.history.push("/Join");
             });
           } else {
-            console.log('error');
             alert("비밀번호가 일치하지 않습니다.");
           }
     };

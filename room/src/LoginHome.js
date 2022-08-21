@@ -15,7 +15,7 @@ const LoginHome=()=> {
     const navigate = useNavigate();
 
     const HomeClick = ()=> {
-        navigate("/");
+        navigate("/LoginHome");
     }
     const MAPClick = ()=> {
         navigate("/MAP");
