@@ -1,22 +1,42 @@
 package project_MJ.summer.service;
 
-import project_MJ.summer.domain.LectureRoom;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
 import project_MJ.summer.domain.Locations;
-import project_MJ.summer.domain.Users;
 
-import java.util.List;
+import project_MJ.summer.dto.SearchToPlaceDto;
 
-public interface LocationService {
+import project_MJ.summer.repository.LocationRepo;
 
-    Users saveUser(Users users);
-    Users getUser(String name);
-    List<Users>getUsers();
+import java.util.Optional;
 
-    void addLectToUser (String username,String location);
-    void setLectToLocation(String username, String place);
 
-    LectureRoom saveLectRoom (LectureRoom lectureRoom);
-    Locations saveLocation(Locations locations);
-    Locations getLocation(String name);
-    List<Locations>getLocations();
+@Service @RequiredArgsConstructor @Slf4j
+public class LocationService {
+
+    private final LocationRepo locationRepo;
+
+    //가야할 위치 조회
+    public SearchToPlaceDto searchToPlaceDto(String place){
+        Optional<Locations> locations = locationRepo.findByPlaceLike(place);
+        locations.orElseThrow(() ->{
+            return new RuntimeException("해당 장소가 없습니다.");
+        });
+        SearchToPlaceDto dto = SearchToPlaceDto
+                .builder()
+                .place(locations.get().getPlace())
+                .x(locations.get().getX())
+                .y(locations.get().getY())
+                .build();
+        log.info("조회된 장소 : {} X : {} Y : {}",dto.getPlace(),dto.getX(),dto.getY());
+        return dto;
+    }
+
+    //위치 저장
+    public Locations addToPlace(Locations locations){
+        log.info("장소 : {} X : {} Y : {}",locations.getPlace(),locations.getX(),locations.getY());
+        return locationRepo.save(locations);
+    }
 }

@@ -21,13 +21,9 @@ public class SummerApplication {
 	@Bean
 	CommandLineRunner run(LocationService locationServiceimpl){
 		return args ->{
-			locationServiceimpl.saveUser(new Users(null,"문상원","MOON","kuim75","1234",new ArrayList<>(),null));
-
-			locationServiceimpl.saveLectRoom(new LectureRoom(null,"13","15","A동",new ArrayList<>()));
-			locationServiceimpl.saveLocation(new Locations(1L,"A동 하연관","35.247429","128.902785"));
-			locationServiceimpl.saveLocation(new Locations(2L,"B동 창조관","35.248505","128.903846"));
-			locationServiceimpl.saveLocation(new Locations(3L,"C동 신어관","35.249394","128.903272"));
-			locationServiceimpl.addLectToUser("문상원","B동");
+			locationServiceimpl.addToPlace(new Locations("A동 하연관","35.247429","128.902785"));
+			locationServiceimpl.addToPlace(new Locations("B동 창조관","35.248505","128.903846"));
+			locationServiceimpl.addToPlace(new Locations("C동 신어관","35.249394","128.903272"));
 		};
 	}
 }

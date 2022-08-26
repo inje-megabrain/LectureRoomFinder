@@ -12,17 +12,25 @@ import java.util.List;
 
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class Locations {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "locations_id")
     private Long id;
 
-    private String place;
 
+    private String place;
     private String x;
     private String y;
+
+    public Locations(String place, String x, String y) {
+        this.place = place;
+        this.x = x;
+        this.y = y;
+    }
 }
