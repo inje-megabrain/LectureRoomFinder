@@ -6,13 +6,16 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { loginUser } from './actions/userAction';
+import { loginUser } from './actions/user_action';
+//import axios from 'axios';
+
 
 const Join=(props)=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [id, setId] = useState("");
-    const [password, setPassword] = useState("");
+    const [identity, setId] = useState("");
+    const [pw, setPassword] = useState("");
+
     
     const SignupClick=()=> {
         navigate("/Signup");
@@ -30,16 +33,18 @@ const Join=(props)=> {
     const onIdHandler = (event) => {
         setId(event.currentTarget.value)
     }
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
+
         let body={
-            id:id,
-            password:password
+            identity:identity,
+            pw:pw
         }
         dispatch(loginUser(body))
         .then(response => {
             if(response.payload.loginSuccess) {
-                props.history.push('/Home')   //리액트에서 페이지 이동하기 위해서는 props.history.push() 이용.
+                props.history.push('/LoginHome')   //리액트에서 페이지 이동하기 위해서는 props.history.push() 이용.
 	            // 로그인 완료된 후 처음 화면(루트 페이지-landingpage로)으로 돌악가게 하기 
             } else{
                 alert('Error')
@@ -64,13 +69,14 @@ const Join=(props)=> {
                         required
                         id="userid"
                         label="ID"
+                        value={identity}
                         onChange={onIdHandler}
                         />
                         <TextField
                         id="password"
                         label="Password"
                         type="password"
-                        value={password}
+                        value={pw}
                         onChange={onPasswordHandler}
                         autoComplete="current-password"
                         />
@@ -79,7 +85,7 @@ const Join=(props)=> {
                             variant="contained"
                             onSubmit={onSubmitHandler}
                             color="primary"
-                            onClick={LoginClick}
+                            onClick={onSubmitHandler}
                         >로그인</Button>
                     </Stack>
                 </div>

@@ -6,7 +6,8 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {registerUser} from "./actions/userAction";
+import { registerUser } from './actions/user_action';
+import axios from 'axios';
 
 const Signup=(props)=> {
     const navigate = useNavigate();
@@ -18,9 +19,9 @@ const Signup=(props)=> {
         navigate("/");
     }
 
-    const [password, setPassword] = useState("");
-    const [nickname,setNickname] = useState("");
-    const [id, setId] = useState("");
+    const [pw, setPassword] = useState("");
+    const [username,setNickname] = useState("");
+    const [identity, setId] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
 
     const onPasswordHandler = (event) => {
@@ -37,26 +38,40 @@ const Signup=(props)=> {
         setconfirmPassword(event.currentTarget.value)
     }
     const hasNotSameError = passwordEntered => 
-        password !== confirmPassword ? true : false;    
+        pw !== confirmPassword ? true : false;    
     
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        let body = {
-            nickname : nickname,
-            id : id,
-            password : password,
-        };
-        if (password === confirmPassword) {
-            dispatch(registerUser(body)).then((res) => {
-              console.log(res);
-              alert("가입이 정상적으로 완료되었습니다");
-              props.history.push("/Join");
-            });
-          } else {
-            alert("비밀번호가 일치하지 않습니다.");
-          }
-    };
 
+        if (pw !== confirmPassword) {
+            alert("비밀번호가 일치하지 않습니다.");
+        } 
+
+        let body = {
+            username : username,
+            identity : identity,
+            pw : pw,
+        }
+        dispatch(registerUser(body))
+        .then(response => {
+            if(response.payload.success) {
+                props.history.push("/Join");
+            }
+          });
+        };
+        async function postData() {
+            try {
+                const response = await axios.post('/api/users/new',{
+                    username : username,
+                    identity : identity,
+                    pw: pw,
+                });
+                console.log(response);
+            } catch(error) {
+                console.error(error);
+            }
+        }
+    
     return (
         <div className='signupback'>
             <div className='megalogo' onClick={homeClick}>MegaBrain</div>
@@ -74,13 +89,13 @@ const Signup=(props)=> {
                             required
                             id="nickname"
                             label="NickName"
-                            value={nickname}
+                            value={username}
                             onChange={onNickHandler}
                             />
                         <TextField
                         required
                         id="userid"
-                        value={id}
+                        value={identity}
                         label="ID"
                         onChange={onIdHandler}
                         />
@@ -88,7 +103,7 @@ const Signup=(props)=> {
                         id="password"
                         label="Password"
                         type="password"
-                        value={password}
+                        value={pw}
                         onChange={onPasswordHandler}
                         autoComplete="current-password"
                         />
@@ -109,6 +124,7 @@ const Signup=(props)=> {
                             variant="contained"
                             onSubmit={onSubmitHandler}
                             color="primary"
+                            onClick={postData}
                         >회원가입</Button>
                     </Stack>
                 </div>

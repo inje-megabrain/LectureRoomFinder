@@ -14,8 +14,8 @@ import FlightLandIcon from '@mui/icons-material/FlightLand';
 const LoginHome=()=> {
     const navigate = useNavigate();
 
-    const HomeClick = ()=> {
-        navigate("/LoginHome");
+    const InformationClick = ()=> {
+        navigate("/Information");
     }
     const MAPClick = ()=> {
         navigate("/MAP");
@@ -44,6 +44,8 @@ const LoginHome=()=> {
                         onClick={campusClick}>Campus</Button>
                     <Button variant="text" color="inherit" size='large'
                         onClick={buildingClick}>Building</Button>
+                    <Button variant="text" color="inherit" size='large'
+                        onClick={InformationClick}>Information</Button>
                 </Stack>
                 </Toolbar>
             </AppBar>
