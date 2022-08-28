@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { loginUser } from './actions/user_action';
-//import axios from 'axios';
+import axios from 'axios';
 
 
 const Join=(props)=> {
@@ -34,23 +34,41 @@ const Join=(props)=> {
         setId(event.currentTarget.value)
     }
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
+    let body={
+        identity:identity,
+        pw:pw,
+    }
+    // const onSubmitHandler = (event) => {
+    //     event.preventDefault();
 
-        let body={
-            identity:identity,
-            pw:pw
-        }
-        dispatch(loginUser(body))
-        .then(response => {
-            if(response.payload.loginSuccess) {
-                props.history.push('/LoginHome')   //리액트에서 페이지 이동하기 위해서는 props.history.push() 이용.
-	            // 로그인 완료된 후 처음 화면(루트 페이지-landingpage로)으로 돌악가게 하기 
-            } else{
-                alert('Error')
-            }
-        })
-    };
+    //     dispatch(loginUser(body))
+    //     .then(response => {
+    //         if(response.payload.loginSuccess) {
+    //             props.history.push('/LoginHome')
+    //         } else{
+    //             alert('Error')
+    //         }
+    //     })
+    // };
+
+    function logincheck(){
+        return (
+            axios.post('api/users/login_check',null,{params : {
+                identity:identity,
+                pw:pw,
+            }})
+            .then((response)=> {
+                if(response.status == 200) {
+                    console.log(response);
+                    window.confirm('로그인이 완료되었습니다!');
+                    navigate("/LoginHome");
+                }
+            }).catch(error=>{
+                console.log(error);
+                window.confirm('다시 정보를 확인해주세요!');
+            })
+        )
+    }
 
     return (
         <div className='loginback'>
@@ -83,9 +101,9 @@ const Join=(props)=> {
                         <Button
                             type="submit"
                             variant="contained"
-                            onSubmit={onSubmitHandler}
+                            //onSubmit={onSubmitHandler}
                             color="primary"
-                            onClick={onSubmitHandler}
+                            onClick={logincheck}
                         >로그인</Button>
                     </Stack>
                 </div>

@@ -22,7 +22,7 @@ const MAP=()=> {
                 });
             });
         } else {
-            window.alert("Current Location unknown");
+            window.confirm("Current Location unknown");
         }
 
         let map = null

@@ -12,6 +12,7 @@ import axios from 'axios';
 const Signup=(props)=> {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const JoinClick=()=> {
         navigate("/Join");
     }
@@ -23,6 +24,7 @@ const Signup=(props)=> {
     const [username,setNickname] = useState("");
     const [identity, setId] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
+    let setcheck = "false";
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value)
@@ -40,12 +42,13 @@ const Signup=(props)=> {
     const hasNotSameError = passwordEntered => 
         pw !== confirmPassword ? true : false;    
     
+    // 회원가입 통신
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
         if (pw !== confirmPassword) {
             alert("비밀번호가 일치하지 않습니다.");
-        } 
+        }
 
         let body = {
             username : username,
@@ -61,15 +64,51 @@ const Signup=(props)=> {
         };
         async function postData() {
             try {
-                const response = await axios.post('/api/users/new',{
-                    username : username,
-                    identity : identity,
-                    pw: pw,
-                });
-                console.log(response);
-            } catch(error) {
-                console.error(error);
-            }
+                console.log(setcheck);
+                if(setcheck == "ok") {
+                    const response = await axios.post('/api/users/new',{
+                        username : username,
+                        identity : identity,
+                        pw: pw,
+                    });
+                    if(response.status == 200) {
+                          window.confirm('회원가입 성공!!');
+                    }
+                     console.log(response);
+                     navigate("/Join");
+                }
+                else {
+                    window.confirm('다시 정보를 확인해주세요!');
+                }
+                } catch(error) {
+                    window.confirm('다시 정보를 확인해주세요!');
+                    console.error(error);
+                }
+        }
+        function check() {
+            return(
+                axios.post('/api/users/id_check',null,{params : {
+                    identity:identity,
+                }})
+                .then((response)=> {
+                    if(response.status == 200) {
+                        console.log('사용가능한 아이디입니다!');
+                        window.confirm('사용가능합니다!');
+                        setcheck="ok";
+                        console.log(setcheck);
+                    }
+                }).catch(error=>{
+                    console.log(error);
+                    if(error.response.status == 400) {
+                        window.confirm('중복된 아이디입니다!');
+                        setcheck = "false";
+                        console.log(setcheck);
+                    }
+                    setcheck = "false";
+                    console.log(setcheck);
+                }
+                )
+            )
         }
     
     return (
@@ -99,6 +138,7 @@ const Signup=(props)=> {
                         label="ID"
                         onChange={onIdHandler}
                         />
+                        <Button onClick={check}>중복확인</Button>
                         <TextField
                         id="password"
                         label="Password"

@@ -90,13 +90,14 @@
 .signupmainframe {
   position: relative;
   width: 800px;
-  height: 650px;
+  height: 700px;
   background-color: white;
   border-radius: 40px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px;
 }
+
 .signupmain {
   text-align: center;
   font-size: 50px;
