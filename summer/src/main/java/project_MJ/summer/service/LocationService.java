@@ -22,6 +22,7 @@ public class LocationService {
     public SearchToPlaceDto searchToPlaceDto(String place){
         Optional<Locations> locations = locationRepo.findByPlaceLike(place);
         locations.orElseThrow(() ->{
+            log.info("조회된 장소가 없습니다.");
             return new RuntimeException("해당 장소가 없습니다.");
         });
         SearchToPlaceDto dto = SearchToPlaceDto

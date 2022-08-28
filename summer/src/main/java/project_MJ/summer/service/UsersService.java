@@ -3,6 +3,7 @@ package project_MJ.summer.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 import project_MJ.summer.domain.Users;
 import project_MJ.summer.dto.NewUserDto;
 import project_MJ.summer.dto.ResponseUserDto;
@@ -45,7 +47,7 @@ public class UsersService {
                     .build();
 
             dtos.add(dto);
-
+            log.info("조회된 유저 아이디 : {}, 닉네임 : {} ",dto.getIdentity(),dto.getUsername());
         }
         return dtos;
     }
@@ -55,6 +57,7 @@ public class UsersService {
         Optional<Users> user = userRepo.findByIdentity(id);
         // 옵셔널은 NPE 방지를 위해 한번 포장해주는 느낌
         user.orElseThrow(() -> {
+            log.info("해당 아이디의 유저가 없습니다 !");
             return new RuntimeException("해당 아이디의 유저가 없습니다");
         }); // 예외
         // 존재하는거
@@ -71,13 +74,11 @@ public class UsersService {
     //로그인 시 계정과 비밀번호가 같은지
     public void checkIDPW(String id, String pw) throws RuntimeException{
         Optional<Users> users = userRepo.findByIdentity(id);
-        if (users.get().getId()==null)
-            throw new RuntimeException("아이디가 존재하지 않습니다.");
-        else{
-            if(!passwordEncoder.matches(pw,users.get().getPw()))
-                throw new RuntimeException("아이디 비밀번호가 일치하지 않습니다.");
+        if(!passwordEncoder.matches(pw,users.get().getPw())){
+            log.info("아이디 비밀번호가 일치하지 않습니다.");
+            throw new RuntimeException("아이디 비밀번호가 일치하지 않습니다.");
         }
-
+        else log.info("아이디 비밀번호가 동일 합니다. 로그인한 아이디 : {}",id);
     }
     // 회원 생성 로직
     public void newUser(NewUserDto dto) {
@@ -92,11 +93,7 @@ public class UsersService {
         userRepo.save(newUser);
     }
     // 아이디 중복 확인
-    public void idCheck (String id)throws Exception{
-        Optional<Users> user = userRepo.findByIdentity(id);
-        user.orElseThrow(() -> {
-            log.info("사용가능한 아이디 입니다.");
-            return new RuntimeException("사용가능한 아이디 입니다.");
-        });
+    public boolean idCheck (String id) {
+        return userRepo.existsByIdentity(id);
     }
 }

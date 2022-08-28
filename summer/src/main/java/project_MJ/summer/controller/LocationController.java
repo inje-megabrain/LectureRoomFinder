@@ -19,10 +19,10 @@ public class LocationController {
     }
     @GetMapping("/lectureroom/get")
     @ApiOperation("해당 계정으로 가야할 곳 조회")
-    public ResponseEntity addToPlace(@RequestParam("search")String place){
+    public ResponseEntity searchToPlaceDto(@RequestParam("search")String place){
         try{
-            SearchToPlaceDto addToPlaceDto = locationService.searchToPlaceDto(place);
-            return new ResponseEntity(addToPlaceDto, HttpStatus.OK);
+            SearchToPlaceDto searchToPlaceDto = locationService.searchToPlaceDto(place);
+            return new ResponseEntity(searchToPlaceDto, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity("등록된 장소명이 아닙니다.", HttpStatus.BAD_REQUEST);
         }

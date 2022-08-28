@@ -1,6 +1,7 @@
 package project_MJ.summer.controller;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class UsersController {
 
 
@@ -59,13 +61,16 @@ public class UsersController {
     }
     @PostMapping("/users/id_check")
     @ApiOperation("id 중복 검사")
-    public ResponseEntity idCheck(@RequestParam("identity") String id) {
-        try {
-            usersService.idCheck(id);
-            return new ResponseEntity("중복된 아이디입니다.", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity("사용 가능한 아이디입니다.", HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Boolean>idCheck(@RequestParam("identity") String id) {
+            if(usersService.idCheck(id)){
+                log.info("중복된 아이디");
+                return new ResponseEntity("중복된 아이디입니다...", HttpStatus.BAD_REQUEST);
+            }
+
+            else{
+                log.info("사용가능한 아이디");
+                return new ResponseEntity("사용 가능한 아이디입니다...", HttpStatus.OK);
+            }
     }
     @PostMapping("/users/login_check")
     @ApiOperation("로그인 시 아이디 비밀번호 일치 확인")

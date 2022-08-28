@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface UserRepo extends JpaRepository<Users,Long> {
     Optional<Users> findByIdentity(String identity);
+    Boolean existsByIdentity(String identity);
 }
