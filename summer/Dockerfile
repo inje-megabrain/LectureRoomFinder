@@ -1,5 +1,8 @@
 FROM adoptopenjdk/openjdk11
-CMD ["./mvnw", "clean", "package"]
-ARG JAR_FILE_PATH=target/*.jar
-COPY summer/build/libs/*.jar app.jar
+CMD ["./gradlew", "clean"]
+
+CMD ["./gradlew", "build"]
+
+COPY ./build/libs/summer-0.0.1-SNAPSHOT.jar app.jar
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
