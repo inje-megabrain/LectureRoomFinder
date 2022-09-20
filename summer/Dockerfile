@@ -1,5 +1,9 @@
-FROM java:11
-EXPOSE 8081
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM openjdk:11-jre-slim-buster
+...
+...
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+... \
+...
+
+ENTRYPOINT java -Xmx2048m -Xss512k -Dspring.profiles.active=production -jar /webapps/application.jar && bash
