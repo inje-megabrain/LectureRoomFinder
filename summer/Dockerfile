@@ -1,9 +1,5 @@
-FROM openjdk:11-jre-slim-buster
-...
-...
-ENV TZ=Asia/Seoul
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-... \
-...
-
-ENTRYPOINT java -Xmx2048m -Xss512k -Dspring.profiles.active=production -jar /webapps/application.jar && bash
+FROM adoptopenjdk/openjdk11
+CMD ["./mvnw", "clean", "package"]
+ARG JAR_FILE_PATH=target/*.jar
+COPY ${JAR_FILE_PATH} app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
