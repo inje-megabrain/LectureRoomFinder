@@ -37,7 +37,7 @@ const MAP=()=> {
                 zoom: 17,
                 zoomControl: true
             })
-
+            
             marker = new naver.maps.Marker({
                 position: new naver.maps.LatLng(currentPosition[0], currentPosition[1]), //Marker 추가, 좌표에 마커가 찍힌다.
                 map: map,

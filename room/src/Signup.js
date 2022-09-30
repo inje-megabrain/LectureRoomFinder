@@ -71,7 +71,7 @@ const Signup=(props)=> {
                         identity : identity,
                         pw: pw,
                     });
-                    if(response.status == 200) {
+                    if(response.status == 200) { 
                           window.confirm('회원가입 성공!!');
                     }
                      console.log(response);
@@ -80,10 +80,11 @@ const Signup=(props)=> {
                 else {
                     window.confirm('다시 정보를 확인해주세요!');
                 }
-                } catch(error) {
-                    window.confirm('다시 정보를 확인해주세요!');
+            }
+            catch(error) {
+                 window.confirm('다시 정보를 확인해주세요!');
                     console.error(error);
-                }
+            }
         }
         function check() {
             return(

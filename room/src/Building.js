@@ -29,21 +29,7 @@ const Building=()=> {
                 setUsers(response.data);
             })
     },[]);
-    
-    async function postData() {
-        try {
-            const response = await axios.post('/api/users/new',{
-                username : "dark-jin",
-                identity : "admin",
-                pw: "12345"
-            });
-            console.log(response);
-        } catch(error) {
-            console.error(error);
-        }
-    }
    
-
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -84,9 +70,6 @@ const Building=()=> {
                         </Typography>
                     </Box>
                 </Modal>
-            </div>
-            <div>
-                <Button onClick={postData}>POST</Button>
             </div>
          </div>
     );

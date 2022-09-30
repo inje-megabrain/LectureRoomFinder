@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { loginUser } from './actions/user_action';
+//import { loginUser } from './actions/user_action';
 import axios from 'axios';
 
 
@@ -19,9 +19,6 @@ const Join=(props)=> {
     
     const SignupClick=()=> {
         navigate("/Signup");
-    }
-    const LoginClick=()=> {
-        navigate("/LoginHome");
     }
     const homeClick=()=> {
         navigate("/");
