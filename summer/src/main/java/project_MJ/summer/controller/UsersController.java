@@ -1,30 +1,40 @@
 package project_MJ.summer.controller;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import project_MJ.summer.domain.Users;
 import project_MJ.summer.dto.NewUserDto;
 import project_MJ.summer.dto.ResponseUserDto;
+import project_MJ.summer.jwt.JwtTokenProvider;
+import project_MJ.summer.repository.UserRepo;
 import project_MJ.summer.service.UsersService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 @Slf4j
+@RequiredArgsConstructor
 public class UsersController {
 
 
-    
+    private final JwtTokenProvider jwtTokenProvider;
     private UsersService usersService;
+    private final UserRepo userRepo;
 
     @Autowired
-    public UsersController(UsersService usersService) {
+    public UsersController(JwtTokenProvider jwtTokenProvider, UsersService usersService, UserRepo userRepo) {
+        this.jwtTokenProvider = jwtTokenProvider;
         this.usersService = usersService;
+        this.userRepo = userRepo;
     }
 
 
@@ -64,24 +74,28 @@ public class UsersController {
     @PostMapping("/users/id_check")
     @ApiOperation("id 중복 검사")
     public ResponseEntity<Boolean>idCheck(@RequestParam("identity") String id) {
-            if(usersService.idCheck(id)){
-                log.info("중복된 아이디");
-                return new ResponseEntity("중복된 아이디입니다...", HttpStatus.BAD_REQUEST);
-            }
-
-            else{
-                log.info("사용가능한 아이디");
-                return new ResponseEntity("사용 가능한 아이디입니다...", HttpStatus.OK);
-            }
-    }
-    @PostMapping("/users/login_check")
-    @ApiOperation("로그인 시 아이디 비밀번호 일치 확인")
-    public ResponseEntity logIn(@RequestParam("identity") String id, @RequestParam("pw") String pw) {
-        try{
-            usersService.checkIDPW(id,pw);
-            return new ResponseEntity("로그인 성공", HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity("아이디 비밀번호가 다릅니다.", HttpStatus.BAD_REQUEST);
+        if(usersService.idCheck(id)){
+            log.info("중복된 아이디");
+            return new ResponseEntity("중복된 아이디입니다...", HttpStatus.BAD_REQUEST);
         }
+
+        else{
+            log.info("사용가능한 아이디");
+            return new ResponseEntity("사용 가능한 아이디입니다...", HttpStatus.OK);
+        }
+    }
+    @PostMapping("/users/login")
+    @ApiOperation("로그인 시 아이디 비밀번호 일치 후 토큰생성")
+    public String logIn(@RequestParam("identity") String identity, @RequestParam("pw") String pw) {
+
+       if(usersService.checkIDPW(identity,pw))
+       {
+           Users user = userRepo.findByIdentity(identity)
+                   .orElseThrow(() -> new IllegalStateException("가입되지 않은 아이디"));
+           String access_token = jwtTokenProvider.createToken(user.getIdentity(),user.getPw(),user.getUsername(),user.getRoles());
+           return access_token;
+
+       }
+       else return null;
     }
 }

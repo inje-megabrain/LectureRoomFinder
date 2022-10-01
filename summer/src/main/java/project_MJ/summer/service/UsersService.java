@@ -1,10 +1,7 @@
 package project_MJ.summer.service;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,29 +9,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import project_MJ.summer.domain.Users;
 import project_MJ.summer.dto.NewUserDto;
 import project_MJ.summer.dto.ResponseUserDto;
 import project_MJ.summer.repository.UserRepo;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service@Slf4j
-public class UsersService {
+public class UsersService implements UserDetailsService{
 
     private final UserRepo userRepo;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private  PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsersService(UserRepo userRepo) {
+    public UsersService(UserRepo userRepo){
         this.userRepo = userRepo;
     }
-
     // 전체 조회 비즈니스 로직
     public List<ResponseUserDto> getAllUsers() {
         List<Users> users = userRepo.findAll();
@@ -44,10 +37,11 @@ public class UsersService {
                     .builder()
                     .username(item.getUsername())
                     .identity(item.getIdentity())
+                    .roles(item.getRoles())
                     .build();
 
             dtos.add(dto);
-            log.info("조회된 유저 아이디 : {}, 닉네임 : {} ",dto.getIdentity(),dto.getUsername());
+            log.info("조회된 유저 아이디 : {}, 닉네임 : {} role : {}",dto.getIdentity(),dto.getUsername(),dto.getRoles());
         }
         return dtos;
     }
@@ -72,13 +66,18 @@ public class UsersService {
     }
 
     //로그인 시 계정과 비밀번호가 같은지
-    public void checkIDPW(String id, String pw) throws RuntimeException{
+    public boolean checkIDPW(String id, String pw) throws RuntimeException{
         Optional<Users> users = userRepo.findByIdentity(id);
         if(!passwordEncoder.matches(pw,users.get().getPw())){
             log.info("아이디 비밀번호가 일치하지 않습니다.");
-            throw new RuntimeException("아이디 비밀번호가 일치하지 않습니다.");
+//            throw new RuntimeException("아이디 비밀번호가 일치하지 않습니다.");
+            return false;
         }
-        else log.info("아이디 비밀번호가 동일 합니다. 로그인한 아이디 : {}",id);
+        else {
+            log.info("아이디 비밀번호가 동일 합니다. 로그인한 아이디 : {}",id);
+            return true;
+        }
+
     }
     // 회원 생성 로직
     public void newUser(NewUserDto dto) {
@@ -87,13 +86,31 @@ public class UsersService {
                 .username(dto.getUsername())
                 .pw(encodedPw)
                 .identity(dto.getIdentity())
+                .roles(Collections.singletonList("USER"))
                 .build();
-        log.info("생성된 아이디 : {} 비밀번호 : {} 닉네임 : {}", newUser.getIdentity(),
-                newUser.getPw(), newUser.getUsername());
+        log.info("생성된 아이디 : {} 비밀번호 : {} 닉네임 : {} role {}", newUser.getIdentity(),
+                newUser.getPw(), newUser.getUsername(),newUser.getRoles());
         userRepo.save(newUser);
     }
     // 아이디 중복 확인
     public boolean idCheck (String id) {
         return userRepo.existsByIdentity(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Optional<Users> users = userRepo.findByIdentity(username);
+        if (users.get().getIdentity() == null) {
+            log.error("User not found in the database");
+            throw new UsernameNotFoundException("User not found in the database");
+        } else {
+            log.info("User found in the database {}", username);
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        users.get().getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority("USER"));
+        });
+        return new org.springframework.security.core.userdetails.User(users.get().getIdentity(), users.get().getPw(), authorities);
     }
 }
