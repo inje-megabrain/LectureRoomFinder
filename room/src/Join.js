@@ -50,7 +50,7 @@ const Join=(props)=> {
 
     function logincheck(){
         return (
-            axios.post('api/users/login_check',null,{params : {
+            axios.post('api/users/login',null,{params : {
                 identity:identity,
                 pw:pw,
             }})
@@ -62,7 +62,7 @@ const Join=(props)=> {
                 }
             }).catch(error=>{
                 console.log(error);
-                window.confirm('다시 정보를 확인해주세요!');
+                window.confirm('로그인 실패!');
             })
         )
     }

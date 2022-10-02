@@ -28,6 +28,10 @@ const LoginHome=()=> {
     }
     const searchClick=()=> {
         navigate("/Search");
+    }  
+    const logoutClick=() => {
+        navigate("/");
+        window.confirm("로그아웃 됐습니다!")
     }
     return (
         <div className='home'>
@@ -46,6 +50,8 @@ const LoginHome=()=> {
                         onClick={buildingClick}>Building</Button>
                     <Button variant="text" color="inherit" size='large'
                         onClick={InformationClick}>Information</Button>
+                    <Button variant="text" color="inherit" size='large'
+                        onClick={logoutClick}>Logout</Button>
                 </Stack>
                 </Toolbar>
             </AppBar>

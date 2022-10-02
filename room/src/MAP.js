@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import './App.css';
 
 const MAP=()=> {
-    const {naver} = window;
     const navigate = useNavigate();
 
     const homeClick=()=> {
@@ -13,7 +12,9 @@ const MAP=()=> {
     const [myLocation, setMyLocation] = useState({ latitude: 35.250565, longitude: 128.902063});
 
     useEffect(() => {
+        const {naver} = window;
         const currentPosition = [myLocation.latitude, myLocation.longitude];
+
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setMyLocation({

@@ -5,13 +5,13 @@ import './App.css';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registerUser } from './actions/user_action';
+//import { useDispatch } from 'react-redux';
+//import { registerUser } from './actions/user_action';
 import axios from 'axios';
 
 const Signup=(props)=> {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     const JoinClick=()=> {
         navigate("/Join");
@@ -24,7 +24,7 @@ const Signup=(props)=> {
     const [username,setNickname] = useState("");
     const [identity, setId] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
-    let setcheck = "false";
+    const [scheck,setcheck] = useState(0);
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value)
@@ -43,41 +43,42 @@ const Signup=(props)=> {
         pw !== confirmPassword ? true : false;    
     
     // 회원가입 통신
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
+    // const onSubmitHandler = (event) => {
+    //     event.preventDefault();
 
-        if (pw !== confirmPassword) {
-            alert("비밀번호가 일치하지 않습니다.");
-        }
+    //     if (pw !== confirmPassword) {
+    //         alert("비밀번호가 일치하지 않습니다.");
+    //     }
 
-        let body = {
-            username : username,
-            identity : identity,
-            pw : pw,
-        }
-        dispatch(registerUser(body))
-        .then(response => {
-            if(response.payload.success) {
-                props.history.push("/Join");
-            }
-          });
-        };
+    //     let body = {
+    //         username : username,
+    //         identity : identity,
+    //         pw : pw,
+    //     }
+    //     dispatch(registerUser(body))
+    //     .then(response => {
+    //         if(response.payload.success) {
+    //             props.history.push("/Join");
+    //         }
+    //       });
+    //     };
         async function postData() {
             try {
-                console.log(setcheck);
-                if(setcheck == "ok") {
+                console.log(scheck);
+                if(scheck == "1") {
                     const response = await axios.post('/api/users/new',{
                         username : username,
                         identity : identity,
                         pw: pw,
                     });
-                    if(response.status == 200) { 
-                          window.confirm('회원가입 성공!!');
+                    console.log(response);
+                    if(scheck == "1") {
+                        window.confirm('회원가입 성공!!');
+                        console.log(scheck);
+                        navigate("/Join");
                     }
-                     console.log(response);
-                     navigate("/Join");
                 }
-                else {
+                if(scheck == "0") {
                     window.confirm('다시 정보를 확인해주세요!');
                 }
             }
@@ -86,6 +87,7 @@ const Signup=(props)=> {
                     console.error(error);
             }
         }
+
         function check() {
             return(
                 axios.post('/api/users/id_check',null,{params : {
@@ -95,22 +97,23 @@ const Signup=(props)=> {
                     if(response.status == 200) {
                         console.log('사용가능한 아이디입니다!');
                         window.confirm('사용가능합니다!');
-                        setcheck="ok";
-                        console.log(setcheck);
+                        setcheck(scheck+1);
+                        console.log(scheck);
                     }
                 }).catch(error=>{
                     console.log(error);
                     if(error.response.status == 400) {
                         window.confirm('중복된 아이디입니다!');
-                        setcheck = "false";
-                        console.log(setcheck);
+                        setcheck(scheck+0);
+                        console.log(scheck);
                     }
-                    setcheck = "false";
-                    console.log(setcheck);
+                    //setcheck = "false";
+                    console.log(scheck);
                 }
                 )
             )
         }
+
     
     return (
         <div className='signupback'>
@@ -163,7 +166,7 @@ const Signup=(props)=> {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onSubmit={onSubmitHandler}
+                            //onSubmit={onSubmitHandler}
                             color="primary"
                             onClick={postData}
                         >회원가입</Button>
