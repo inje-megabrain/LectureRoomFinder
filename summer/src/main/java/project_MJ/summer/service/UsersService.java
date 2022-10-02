@@ -68,14 +68,13 @@ public class UsersService implements UserDetailsService{
     //로그인 시 계정과 비밀번호가 같은지
     public boolean checkIDPW(String id, String pw) throws RuntimeException{
         Optional<Users> users = userRepo.findByIdentity(id);
-        if(!passwordEncoder.matches(pw,users.get().getPw())){
-            log.info("아이디 비밀번호가 일치하지 않습니다.");
-//            throw new RuntimeException("아이디 비밀번호가 일치하지 않습니다.");
-            return false;
-        }
-        else {
+        if(passwordEncoder.matches(pw,users.get().getPw())){
             log.info("아이디 비밀번호가 동일 합니다. 로그인한 아이디 : {}",id);
             return true;
+        }
+        else {
+            log.info("아이디 비밀번호가 일치하지 않습니다.");
+            return false;
         }
 
     }

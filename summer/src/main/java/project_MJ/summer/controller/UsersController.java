@@ -54,13 +54,14 @@ public class UsersController {
     @ApiOperation("해당 계정명으로 유저 조회")
     public ResponseEntity getUser(@RequestParam("identity") String id) {
         try {
-            ResponseUserDto users= usersService.getUser(id);
+            ResponseUserDto users = usersService.getUser(id);
             return new ResponseEntity(users, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("잘못된 조회", HttpStatus.BAD_REQUEST);
         }
     }
-    @CrossOrigin(origins="*")
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/users/new")
     @ApiOperation("유저 생성")
     public ResponseEntity addNewUser(@RequestBody NewUserDto userDto) {
@@ -71,31 +72,35 @@ public class UsersController {
             return new ResponseEntity("잘못된 생성", HttpStatus.BAD_REQUEST);
         }
     }
+
     @PostMapping("/users/id_check")
     @ApiOperation("id 중복 검사")
-    public ResponseEntity<Boolean>idCheck(@RequestParam("identity") String id) {
-        if(usersService.idCheck(id)){
+    public ResponseEntity<Boolean> idCheck(@RequestParam("identity") String id) {
+        if (usersService.idCheck(id)) {
             log.info("중복된 아이디");
             return new ResponseEntity("중복된 아이디입니다...", HttpStatus.BAD_REQUEST);
-        }
-
-        else{
+        } else {
             log.info("사용가능한 아이디");
             return new ResponseEntity("사용 가능한 아이디입니다...", HttpStatus.OK);
         }
     }
+
     @PostMapping("/users/login")
     @ApiOperation("로그인 시 아이디 비밀번호 일치 후 토큰생성")
-    public String logIn(@RequestParam("identity") String identity, @RequestParam("pw") String pw) {
+    public ResponseEntity logIn(@RequestParam("identity") String identity, @RequestParam("pw") String pw){
+        try{
+            Users user = userRepo.findByIdentity(identity)
+                    .orElseThrow(() -> new IllegalStateException("가입되지 않은 아이디"));
+            if(usersService.checkIDPW(user.getIdentity(),pw)){
+                String access_token = jwtTokenProvider.createToken(user.getIdentity(), user.getPw(), user.getUsername(), user.getRoles());
+                log.info("로그인 성공 토큰 발행");
+                return new ResponseEntity(access_token, HttpStatus.OK);
+            }
+            return new ResponseEntity("아이디 비밀 번호가 일치 하지않습니다.", HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            log.info("로그인 실패");
+            return new ResponseEntity("해당 아이디를 찾을 수 없습니다.", HttpStatus.BAD_REQUEST);
+        }
 
-       if(usersService.checkIDPW(identity,pw))
-       {
-           Users user = userRepo.findByIdentity(identity)
-                   .orElseThrow(() -> new IllegalStateException("가입되지 않은 아이디"));
-           String access_token = jwtTokenProvider.createToken(user.getIdentity(),user.getPw(),user.getUsername(),user.getRoles());
-           return access_token;
-
-       }
-       else return null;
     }
 }

@@ -12,7 +12,7 @@ import project_MJ.summer.service.LocationService;
 @RequestMapping("/main")
 public class LocationController {
 
-    private LocationService locationService;
+    private final LocationService locationService;
 
     public LocationController(LocationService locationService) {
         this.locationService = locationService;
