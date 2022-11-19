@@ -32,7 +32,7 @@ public class Users implements UserDetails{
 
     private String username;
     private String identity;
-    private String pw;
+    private String json;
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
@@ -42,11 +42,11 @@ public class Users implements UserDetails{
 
     private String lect;
 
-    public Users( String username, String identity, String pw, List<LectureRoom> lectureRooms, String lect) {
+    public Users( String username, String identity, String json, List<LectureRoom> lectureRooms, String lect) {
 
         this.username = username;
         this.identity = identity;
-        this.pw = pw;
+        this.json = json;
         this.lectureRooms = lectureRooms;
         this.lect = lect;
         this.roles = Collections.singletonList("USER");
@@ -61,7 +61,7 @@ public class Users implements UserDetails{
 
     @Override
     public String getPassword() {
-        return getPw();
+        return getJson();
     }
 
     @Override

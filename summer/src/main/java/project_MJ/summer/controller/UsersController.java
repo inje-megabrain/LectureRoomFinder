@@ -87,12 +87,12 @@ public class UsersController {
 
     @PostMapping("/users/login")
     @ApiOperation("로그인 시 아이디 비밀번호 일치 후 토큰생성")
-    public ResponseEntity logIn(@RequestParam("identity") String identity, @RequestParam("pw") String pw){
+    public ResponseEntity logIn(@RequestParam("identity") String identity, @RequestParam("pw") String json){
         try{
             Users user = userRepo.findByIdentity(identity)
                     .orElseThrow(() -> new IllegalStateException("가입되지 않은 아이디"));
-            if(usersService.checkIDPW(user.getIdentity(),pw)){
-                String access_token = jwtTokenProvider.createToken(user.getIdentity(), user.getPw(), user.getUsername(), user.getRoles());
+            if(usersService.checkIDPW(user.getIdentity(),json)){
+                String access_token = jwtTokenProvider.createToken(user.getIdentity(), user.getJson(), user.getUsername(), user.getRoles());
                 log.info("로그인 성공 토큰 발행");
                 return new ResponseEntity(access_token, HttpStatus.OK);
             }

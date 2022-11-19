@@ -16,5 +16,5 @@ public class NewUserDto {
 
     private String username;
     private String identity;
-    private String pw;
+    private String json;
 }

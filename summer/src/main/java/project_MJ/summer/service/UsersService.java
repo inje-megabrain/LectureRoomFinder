@@ -66,9 +66,9 @@ public class UsersService implements UserDetailsService{
     }
 
     //로그인 시 계정과 비밀번호가 같은지
-    public boolean checkIDPW(String id, String pw) throws RuntimeException{
+    public boolean checkIDPW(String id, String json) throws RuntimeException{
         Optional<Users> users = userRepo.findByIdentity(id);
-        if(passwordEncoder.matches(pw,users.get().getPw())){
+        if(passwordEncoder.matches(json,users.get().getJson())){
             log.info("아이디 비밀번호가 동일 합니다. 로그인한 아이디 : {}",id);
             return true;
         }
@@ -80,15 +80,15 @@ public class UsersService implements UserDetailsService{
     }
     // 회원 생성 로직
     public void newUser(NewUserDto dto) {
-        String encodedPw = passwordEncoder.encode(dto.getPw());
+        String encodedPw = passwordEncoder.encode(dto.getJson());
         Users newUser = Users.builder()
                 .username(dto.getUsername())
-                .pw(encodedPw)
+                .json(encodedPw)
                 .identity(dto.getIdentity())
                 .roles(Collections.singletonList("USER"))
                 .build();
-        log.info("생성된 아이디 : {} 비밀번호 : {} 닉네임 : {} role {}", newUser.getIdentity(),
-                newUser.getPw(), newUser.getUsername(),newUser.getRoles());
+        log.info("생성된 아이디 : {} json : {} 닉네임 : {} role {}", newUser.getIdentity(),
+                newUser.getJson(), newUser.getUsername(),newUser.getRoles());
         userRepo.save(newUser);
     }
     // 아이디 중복 확인
@@ -110,6 +110,6 @@ public class UsersService implements UserDetailsService{
         users.get().getRoles().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority("USER"));
         });
-        return new org.springframework.security.core.userdetails.User(users.get().getIdentity(), users.get().getPw(), authorities);
+        return new org.springframework.security.core.userdetails.User(users.get().getIdentity(), users.get().getJson(), authorities);
     }
 }
