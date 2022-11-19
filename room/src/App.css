@@ -1,5 +1,5 @@
 .home {
-  background-image: url('/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/sea.jpeg');
+  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/sea.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -48,7 +48,7 @@
 }
 .campusback {
   position: fixed;
-  background-image: url('/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/초원.jpg');
+  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/초원.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -70,9 +70,9 @@
 .campusimg {
   border-radius: 40px;
   position: relative;
-  background-image: url('/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/campus.jpg');
-  width: 90%;/*1000px;*/
-  height: 90%;/*500px;*/
+  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/campus.jpg");
+  width: 90%; /*1000px;*/
+  height: 90%; /*500px;*/
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
@@ -120,7 +120,7 @@
 }
 .loginback {
   position: fixed;
-  background-color: #BA68FB;
+  background-color: #ba68fb;
   height: 100vh;
   width: 100vw;
 }
