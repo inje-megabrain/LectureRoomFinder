@@ -13,8 +13,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: moon1257/smartfarm-be
-
+  IMAGE_NAME: moon1257/lectureroomfinder-be
 jobs:
   build:
     runs-on: ubuntu-latest
