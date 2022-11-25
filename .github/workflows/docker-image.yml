@@ -3,6 +3,7 @@ name: Docker
 on:
   push:
     branches:
+    - main
     - develop
     - back
     # Publish semver tags as releases.
