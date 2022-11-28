@@ -1,7 +1,8 @@
 .home {
-  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/sea.jpeg");
+  /* background-image: url("public/sea.jpeg"); */
   background-size: cover;
   background-repeat: no-repeat;
+  background-color:rgb(64, 135, 242);
   height: 100vh;
   width: 100vw;
 }
