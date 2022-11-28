@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface LocationRepo extends JpaRepository<Locations,Long> {
 
-   // List<Locations> findByLocationsList(@Param("list")String list);
+    @Query("select l from Locations l WHERE l.place like %:place%")
+    Optional<Locations> findByPlaceLike (@Param("place") String place);
 
 }

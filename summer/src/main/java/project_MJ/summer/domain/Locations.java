@@ -12,23 +12,24 @@ import java.util.List;
 
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class Locations {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "locations_id")
     private Long id;
 
-    @ElementCollection(targetClass=String.class)
-    private List<String> list = new ArrayList<>();
 
+    private String place;
     private String x;
     private String y;
 
-    public Locations(Long id, String x, String y) {
-        this.id = id;
+    public Locations(String place, String x, String y) {
+        this.place = place;
         this.x = x;
         this.y = y;
     }

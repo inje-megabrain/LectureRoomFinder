@@ -21,26 +21,15 @@ public class SummerApplication {
 	@Bean
 	CommandLineRunner run(LocationService locationServiceimpl){
 		return args ->{
-			locationServiceimpl.saveUser(new Users(null,"문상원","MOON","kuim75","1234",new ArrayList<>(),null));
-
-			locationServiceimpl.saveLectRoom(new LectureRoom(null,"13","15","A동",new ArrayList<>()));
-
-			List<String> place1 = new ArrayList<>();
-			place1.add("A동");
-			place1.add("하연관");
-
-			List<String> place2 = new ArrayList<>();
-			place2.add("B동");
-			place2.add("창조관");
-			List<String> place3 = new ArrayList<>();
-			place3.add("C동");
-			place3.add("신어관");
-
-			locationServiceimpl.saveLocation(new Locations(1L, place1,"35.247429","128.902785"));
-			locationServiceimpl.saveLocation(new Locations(2L, place2,"35.248505","128.903846"));
-			locationServiceimpl.saveLocation(new Locations(3L, place3,"35.249394","128.903272"));
-
-			//locationServiceimpl.addLectToUser("문상원","A동");
+			locationServiceimpl.addToPlace(new Locations("A동 하연관","35.247429","128.902785"));
+			locationServiceimpl.addToPlace(new Locations("B동 창조관","35.248505","128.903846"));
+			locationServiceimpl.addToPlace(new Locations("C동 신어관","35.249394","128.903272"));
+			locationServiceimpl.addToPlace(new Locations("D동 탐진관","35.250279","128.901501"));
+			locationServiceimpl.addToPlace(new Locations("E동 장영실관","35.249398","128.902158"));
+			locationServiceimpl.addToPlace(new Locations("F동 성산관","35.248621","128.901657"));
+			locationServiceimpl.addToPlace(new Locations("H동 약학관","35.250793","128.901325"));
+			locationServiceimpl.addToPlace(new Locations("학군단","35.249650","128.900857"));
+			locationServiceimpl.addToPlace(new Locations("늘빛관","35.250544","128.902743"));
 		};
 	}
 }
