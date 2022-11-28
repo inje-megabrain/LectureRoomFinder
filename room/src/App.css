@@ -49,7 +49,7 @@
 }
 .campusback {
   position: fixed;
-  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/초원.jpg");
+  /* background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/초원.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -71,7 +71,7 @@
 .campusimg {
   border-radius: 40px;
   position: relative;
-  background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/campus.jpg");
+  /* background-image: url("/Users/choijinseo/Desktop/building/LectureRoomFinder/room/src/image/campus.jpg"); */
   width: 90%; /*1000px;*/
   height: 90%; /*500px;*/
   background-size: cover;
