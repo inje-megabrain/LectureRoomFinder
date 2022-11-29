@@ -3,7 +3,6 @@ WORKDIR /app
 COPY package*.json /app
 RUN npm install
 COPY . .
-RUN npm run build:staging
-CMD npm run start:$SERVICE
-# CMD [ "npm", "start" ]
+# RUN npm run build:staging
+CMD [ "npm", "start" ]
 EXPOSE 3000
