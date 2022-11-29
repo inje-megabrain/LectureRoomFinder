@@ -4,5 +4,6 @@ COPY package*.json /app
 RUN npm install
 COPY . .
 RUN npm run build:staging
-CMD [ "npm", "start" ]
+CMD npm run start:$SERVICE
+# CMD [ "npm", "start" ]
 EXPOSE 3000
